@@ -1,64 +1,59 @@
 package WebService::SyoboiCalendar;
 use Mouse;
+use Smart::Args;
 use Readonly;
 use WebService::SyoboiCalendar::API;
+use WebService::SyoboiCalendar::API::Result;
 
-has user => (is => 'rw', isa => 'String');
+has user => (is => 'rw', isa => 'Str');
 
 has api => (
     is => 'ro',
-    default => sub { WebService::SyoboiCalendar::API->new },
+    default => sub { 
+        my $self = shift;
+        WebService::SyoboiCalendar::API->new(user => $self->user);
+    },
 );
+
+sub timetable {
+    args_pos my $self, my $args => { optional => 1, default => {} } ;
+
+    my @results = map { 
+        WebService::SyoboiCalendar::API::Result->new(
+            api => $self->api,
+            result => $_,
+        )
+    } @{ $self->api->rss2({
+        %$args,
+    })->{items} };
+
+    \@results;
+}
+
+sub current {
+    args my $self;
+    my $results = $self->timetable;
+    return unless $results;
+    $results->[0];
+}
+
+sub search {
+    args_pos my $self, my $title;
+    my @results = map {
+        WebService::SyoboiCalendar::API::Result->new(
+            api => $self->api,
+            result => $_,
+        )
+    } values %{ $self->api->json({
+        req    => 'TitleSearch',
+        search => $title,
+        limit  => 15,
+    })->{Titles} };
+    \@results;
+}
 
 no Mouse;
 __PACKAGE__->meta->make_immutable;
-
-sub _param {
-    my ($hash, $key) = @_;
-    my $val = delete($hash->{$key}) || delete($hash->{lc($key)});
-    $val ? ($key => $val) : ();
-}
-
-sub timetable {
-    my ($self, $args) = @_;
-
-    my $start = delete $args->{start};
-    $start = $start->strftime('%Y%m%d%H%M') if $start && $start->isa('DateTime');
-
-    my $end = delete $args->{end};
-    $end = $end->strftime('%Y%m%d%H%M') if $end && $end->isa('DateTime');
-
-    $self->api->timetable({
-        ($start ? (start    => $start) : ()),
-        ($end ? (end    => $end) : ()),
-        map {
-            _param($args, $_);
-        } qw(days titlefmt usr filter usch ssch),
-
-        %$args,
-    });
-}
-
-sub detail {
-    my ($self, $args) = @_;
-    $self->api->detail({
-        map {
-            _param($args, $_);
-        } qw(Req Start Days TID PID ChID Count),
-
-        %$args,
-    });
-}
-
-sub detail_from_program {
-    my ($self, $program) = @_;
-    $self->detail({
-        req => 'ProgramByPID,TitleFull',
-        pid => $program->{PID},
-    });
-}
-
-1;
 
 __END__
 

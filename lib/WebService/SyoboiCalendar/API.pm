@@ -1,5 +1,6 @@
 package WebService::SyoboiCalendar::API;
 use Mouse;
+use Smart::Args;
 use Readonly;
 use LWP::UserAgent;
 use HTTP::Request;
@@ -18,6 +19,8 @@ has ua => (
     isa => 'LWP::UserAgent',
     default => sub { LWP::UserAgent->new },
 );
+
+has user => ( is => 'ro' );
 
 no Mouse;
 __PACKAGE__->meta->make_immutable;
@@ -40,14 +43,42 @@ sub get_json {
     decode_json($res->content);
 }
 
-sub timetable {
-    my ($self, $args) = @_;
-    my $res = $self->get_json($API_RSS2, { %$args, alt => 'json' });
+sub _param {
+    args_pos my $hash, my $key;
+    my $val = delete($hash->{$key}) || delete($hash->{lc($key)});
+    $val ? ($key => $val) : ();
 }
 
-sub detail {
+sub _datetime_param {
+    args_pos my $hash, my $key;
+    my $val = delete($hash->{$key}) || delete($hash->{lc($key)});
+    $val = $val->strftime('%Y%m%d%H%M') if $val && $val->isa('DateTime');
+    $val ? ($key => $val) : ();
+}
+
+sub rss2 {
     my ($self, $args) = @_;
-    $self->get_json($API_JSON, $args);
+    $self->get_json($API_RSS2, {
+        (map {
+            _param($args, $_);
+        } qw(days titlefmt usr filter usch ssch)),
+        (map {
+            _datetime_param($args, $_);
+        } qw(start end)),
+        alt => 'json',
+        ($self->user ? (usr => $self->user) : () ),
+        %$args,
+    });
+}
+
+sub json {
+    my ($self, $args) = @_;
+    $self->get_json($API_JSON, {
+        (map {
+            _param($args, $_);
+        } qw(Req Start Days TID PID ChID Count Search Limit)),
+        %$args,
+    });
 }
 
 1;
