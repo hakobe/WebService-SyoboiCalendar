@@ -52,6 +52,14 @@ sub search {
     \@results;
 }
 
+sub title {
+    args_pos my $self, my $tid;
+    WebService::SyoboiCalendar::API::Result->new(
+        api => $self->api,
+        result => { TID => $tid },
+    )->title;
+}
+
 no Mouse;
 __PACKAGE__->meta->make_immutable;
 
