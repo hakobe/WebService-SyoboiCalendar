@@ -8,8 +8,11 @@ use HTTP::Request::Common;
 use URI;
 use URI::QueryParam;
 use JSON::XS;
+use UNIVERSAL::require;
 
 use WebService::SyoboiCalendar::Error;
+
+our $DEBUG = 0;
 
 Readonly my $API_RSS2 => "http://cal.syoboi.jp/rss2.php";
 Readonly my $API_JSON => "http://cal.syoboi.jp/json.php";
@@ -25,11 +28,17 @@ has user => ( is => 'ro' );
 no Mouse;
 __PACKAGE__->meta->make_immutable;
 
+sub p {
+    Data::Dumper->require;
+    warn Data::Dumper::Dumper(@_);
+}
+
 sub get {
     my ($self, $url, $args) = @_;
     $url = URI->new($url);
     $url->query_form(%$args);
     my $res = $self->ua->get($url);
+    p $res if $DEBUG;
     WebService::SyoboiCalendar::APIRequestError->throw(
         error => qq(error while requesting to "$url"),
         res => $res,
@@ -40,7 +49,9 @@ sub get {
 sub get_json {
     my ($self, $url, $args) = @_;
     my $res = $self->get($url, $args);
-    decode_json($res->content);
+    my $json = decode_json($res->content);
+    p $json if $DEBUG;
+    $json;
 }
 
 sub _param {
