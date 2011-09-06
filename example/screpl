@@ -1,0 +1,111 @@
+#!/usr/bin/env perl
+
+#use strictures 1;
+use strict;
+use warnings;
+use Eval::WithLexicals;
+use Term::ReadLine;
+#use Data::Dumper;
+use YAML;
+use Getopt::Long;
+use Term::ANSIColor::Markup;
+use URI;
+
+use autobox;
+use autobox::SearchQuery;
+use URI::BrowserOpen;
+
+use WebService::SyoboiCalendar;
+
+use Encode;
+use Term::Encoding qw(term_encoding);
+my $encoding = term_encoding;
+
+binmode STDOUT => ":utf8";
+
+GetOptions(
+    "plugin=s" => \my @plugins
+);
+
+$SIG{INT} = sub { warn "SIGINT\n" };
+
+{ package Data::Dumper; no strict 'vars';
+    $Terse = $Indent = $Useqq = $Deparse = $Sortkeys = 1;
+    $Quotekeys = 0;
+}
+
+#$WebService::SyoboiCalendar::API::DEBUG = 2; 
+{ package WebService::SyoboiCalenar::REPLSupport;
+    use autobox;
+    use autobox::SearchQuery;
+    use URI::BrowserOpen;
+    our $SYOBOI = WebService::SyoboiCalendar->new;
+    sub search {
+        my $keyword = shift;
+        my $results = $SYOBOI->search($keyword);
+
+        print Term::ANSIColor::Markup->colorize("<bold>TID\ttitle</bold>\n");
+        for my $result (@$results) {
+            my $title = $result->title->title;
+            $title =~ s!($keyword)!<yellow>$1</yellow>!g;
+            print sprintf "%s\t%s\n", $result->tid, $title;
+        }
+
+        return;
+    }
+
+    sub timetable {
+        my $results = $SYOBOI->timetable(@_);
+
+        print Term::ANSIColor::Markup->colorize("<bold>TID\tPID\ttitle\t</bold>\n");
+        for my $result (@$results[0..5]) {
+            my $program = $result->program;
+            my $title = $result->title;
+            print sprintf "%s\t%s \t%s ~ %s\n", $result->pid, $title->title, $program->start_time->hms, $program->end_time->hms;
+        }
+
+        return;
+    }
+
+    sub current {
+        my $current = $SYOBOI->current;
+        print $current->title->title . "\n";
+        $current;
+    }
+
+    sub title {
+        my $tid = shift;
+        $SYOBOI->title($tid); 
+    }
+
+    sub w {
+        my $keyword = shift;
+        $keyword->wikipedia->open;
+    }
+
+    sub o {
+        my $url = shift;
+        URI->new($url)->open;
+    }
+}
+
+my %args = (
+    in_package => 'WebService::SyoboiCalenar::REPLSupport',
+);
+
+my $eval = @plugins
+    ? Eval::WithLexicals->with_plugins(@plugins)->new(%args)
+    : Eval::WithLexicals->new(%args);
+
+my $read = Term::ReadLine::Gnu->new('Perl REPL');
+while (1) {
+    my $line = $read->readline('screpl$ ');
+    exit unless defined $line;
+    $line = decode($encoding, $line);
+    my @ret; eval {
+        local $SIG{INT} = sub { die "Caught SIGINT" };
+        @ret = $eval->eval($line); 1;
+    } or @ret = ("Error!", $@);
+    # XXX
+    print Dump $ret[0] if @ret && (!ref($ret[0]) || ref($ret[0]) =~ m/(?:HASH|ARRAY)/);
+}
