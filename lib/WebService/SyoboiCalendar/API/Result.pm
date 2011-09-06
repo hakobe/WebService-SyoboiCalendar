@@ -13,14 +13,24 @@ has api => (
 );
 has result => ( is => 'ro' );
 
+sub pid {
+    args my $self;
+    $self->result->{PID};
+}
+
+sub tid {
+    args my $self;
+    $self->result->{TID};
+}
+
 sub program {
     args_pos my $self, my $args => { optional => 1, default => {} } ;
-    my $result = $self->api->json({
+    my ($result) = values %{ $self->api->json({
         req => 'ProgramByPID',
         PID => $self->result->{PID},
         %$args,
-    });
-    $result;
+    })->{Programs} };
+    WebService::SyoboiCalendar::Program->new( api_result => $result);
 }
 
 sub title {
