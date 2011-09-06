@@ -1,6 +1,8 @@
 package WebService::SyoboiCalendar::Program;
 use Mouse;
 use Smart::Args;
+use YAML;
+use DateTime;
 
 has api_result => ( is => 'rw' );
 
@@ -9,10 +11,26 @@ sub pid {
     $self->api_result
 }
 
-sub title {
+sub count {
+    args my $self;
+    $self->api_result->{Count};
 }
 
-sub start {
+sub start_time {
+    args my $self;
+
+    DateTime->from_epoch(
+        time_zone => 'local',
+        epoch     => $self->api_result->{StTime},
+    );
+}
+
+sub end_time {
+    args my $self;
+    DateTime->from_epoch(
+        time_zone => 'local',
+        epoch     => $self->api_result->{EdTime},
+    );
 }
 
 no Mouse;
