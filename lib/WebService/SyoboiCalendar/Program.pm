@@ -1,7 +1,6 @@
 package WebService::SyoboiCalendar::Program;
 use Mouse;
 use Smart::Args;
-use YAML;
 use DateTime;
 
 has api_result => ( is => 'rw' );
