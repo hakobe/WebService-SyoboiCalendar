@@ -117,12 +117,14 @@ sub rss2 {
 
 sub json {
     my ($self, $args) = @_;
-    $self->get_json($API_JSON, {
+    my $result = $self->get_json($API_JSON, {
         (map {
             _param($args, $_);
         } qw(Req Start Days TID PID ChID Count Search Limit)),
         %$args,
     });
+
+    $result;
 }
 
 sub search {

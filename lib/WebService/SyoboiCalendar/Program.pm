@@ -32,5 +32,10 @@ sub end_time {
     );
 }
 
+sub ch_name {
+    args my $self;
+    $self->api_result->{ChName};
+}
+
 no Mouse;
 __PACKAGE__->meta->make_immutable;

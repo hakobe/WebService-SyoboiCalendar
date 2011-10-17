@@ -35,6 +35,14 @@ sub title {
     )->title;
 }
 
+sub program {
+    args_pos my $self, my $pid;
+    WebService::SyoboiCalendar::API::Result->new(
+        api => $self->api,
+        result => { PID => $pid },
+    )->program;
+}
+
 sub timetable {
     args_pos my $self, my $args => { optional => 1, default => {} } ;
 

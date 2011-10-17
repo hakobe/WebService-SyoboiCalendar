@@ -90,5 +90,10 @@ sub comment {
     $self->api_result->{Comment};
 }
 
+sub first_ch {
+    args my $self;
+    $self->api_result->{FirstCh};
+}
+
 no Mouse;
 __PACKAGE__->meta->make_immutable;
