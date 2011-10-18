@@ -7,7 +7,6 @@ our $VERSION = '0.01';
 $VERSION = eval $VERSION;
 
 use Smart::Args;
-use Readonly;
 use WebService::SyoboiCalendar::API;
 use WebService::SyoboiCalendar::API::Result;
 

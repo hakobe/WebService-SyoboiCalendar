@@ -8,7 +8,7 @@ requires 'JSON::XS';
 requires 'Try::Tiny';
 requires 'parent';
 requires 'Web::Query';
-requires 'Smart::Args';
+requires 'Smart::Args' => "0.08";
 requires 'Regexp::Common';
 requires 'Encode';
 requires 'Readonly';
