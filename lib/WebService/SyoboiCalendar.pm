@@ -1,5 +1,11 @@
 package WebService::SyoboiCalendar;
+
 use Mouse;
+
+use 5.008_001;
+our $VERSION = '0.01';
+$VERSION = eval $VERSION;
+
 use Smart::Args;
 use Readonly;
 use WebService::SyoboiCalendar::API;

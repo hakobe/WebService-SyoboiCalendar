@@ -16,6 +16,8 @@ requires 'URI';
 requires 'URI::QueryParam';
 requires 'DateTime';
 
+install_script 'bin/syoboirepl';
+
 build_requires 'Test::More';
 auto_include;
 WriteAll;

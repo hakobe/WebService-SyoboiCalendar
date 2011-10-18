@@ -13,9 +13,7 @@ my $syoboi = WebService::SyoboiCalendar->new($config);
 
 use Data::Dumper;
 
-my $results = $syoboi->search_program({
-    range => '2011/10/1-',
-    fresh => 2,
+my $results = $syoboi->search_title({
+    title => 'まどか☆マギカ',
 });
-
-warn $results->[0]->title->title;
+warn join "\n", @{ $results->[0]->title->voice_actors };

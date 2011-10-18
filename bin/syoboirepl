@@ -9,10 +9,6 @@ use Getopt::Long;
 use Term::ANSIColor::Markup;
 use URI;
 
-use autobox;
-use autobox::SearchQuery;
-use URI::BrowserOpen;
-
 use WebService::SyoboiCalendar;
 
 use Encode;
@@ -28,9 +24,6 @@ $SIG{INT} = sub { warn "SIGINT\n" };
 
 { package WebService::SyoboiCalenar::REPLSupport;
     use Config::Pit qw(pit_get);
-    use autobox;
-    use autobox::SearchQuery;
-    use URI::BrowserOpen;
 
     my $config = pit_get("cal.syoboi.jp", require => {
         user => "your username on Syoboi Calendar",
@@ -86,12 +79,12 @@ $SIG{INT} = sub { warn "SIGINT\n" };
 
     sub w($) {
         my $keyword = shift;
-        $keyword->wikipedia->open;
+        o(URI->new(sprintf('http://ja.wikipedia.org/wiki/%s', $keyword)));
     }
 
     sub o($) {
         my $url = shift;
-        URI->new($url)->open;
+        system('open', $url->as_string);
     }
 }
 
