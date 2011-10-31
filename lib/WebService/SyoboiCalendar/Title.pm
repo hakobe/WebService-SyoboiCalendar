@@ -59,12 +59,6 @@ sub sub_titles {
     [split /\r\n/, $sub_titles];
 }
 
-sub sub_title {
-    args_pos my $self, my $count;
-    my $sub_titles = $self->sub_titles;
-    $sub_titles && $sub_titles->[$count - 1];
-}
-
 sub characters {
     args my $self;
     [keys %{ $self->cast }];
@@ -97,3 +91,29 @@ sub first_ch {
 
 no Mouse;
 __PACKAGE__->meta->make_immutable;
+
+=head1 NAME
+
+WebService::SyoboiCalendar::Title - Anime Title Object
+
+=head1 SYNOPSIS
+
+  my $title = $result->title;
+
+  $title->tid;
+  $title->urls;
+  $title->official_site_url;
+  $title->title;
+  $title->sub_titles;
+  $title->cast;
+  $title->characters;
+  $title->voice_actors;
+  $title->comment;
+  $title->first_ch;
+
+=head1 DESCRIPTION
+
+This object provides methods to access Anime Title information.
+You can generate this from WebService::SyoboiCalendar::API::Result.
+
+=cut

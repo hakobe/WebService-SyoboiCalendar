@@ -39,3 +39,24 @@ sub ch_name {
 
 no Mouse;
 __PACKAGE__->meta->make_immutable;
+
+=head1 NAME
+
+WebService::SyoboiCalendar::Program - Anime Program Object
+
+=head1 SYNOPSIS
+
+  my $program = $result->program;
+
+  $program->pid;
+  $program->count;
+  $program->start_time;
+  $program->end_time;
+  $program->ch_name;
+
+=head1 DESCRIPTION
+
+This object provides methods to access Anime Program information.
+You can generate this from WebService::SyoboiCalendar::API::Result.
+
+=cut

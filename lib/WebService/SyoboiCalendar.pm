@@ -24,7 +24,6 @@ has api => (
     },
 );
 
-
 sub current {
     args my $self;
     my $results = $self->timetable;
@@ -102,15 +101,92 @@ __END__
 
 =head1 NAME
 
-WebService::SyoboiCalendar -
+WebService::SyoboiCalendar - Retrieve Anime info. with SyoboiCalendar API.
 
 =head1 SYNOPSIS
 
-  use WebService::SyoboiCalendar;
+  my $syobocal = WebService::SyoboiCalendar->new(
+      user => 'USERNAME',
+      pass => 'PASSWORD',
+  );
+
+  # Search
+  my $results = $syobocal->search_title(title => 'Fate/Zero')
+
+  # Retrieve timetable
+     $results = $syobocal->timetable;
+
+  # Retrieve a current result of an anime program
+  my $result = $syobocal->current;
+
+  # Title object
+  my $title = $result->title;
+  $title->urls;
+  $title->characters;
+  $title->voice_actors;
+
+  # Program object
+  my $program = $result->program;
+  $program->count;
+  $program->start_time;
+  $program->end_time;
 
 =head1 DESCRIPTION
 
-WebService::SyoboiCalendar is
+WebService::SyoboiCalendar provides a convinient way 
+to access Syoboi Calendar(http://cal.syoboi.jp/).
+
+=head1 METHODS
+
+=over 4
+
+=item new
+
+  my $syobocal = WebService::SyoboiCalendar->new(
+      user => 'USERNAME',
+      pass => 'PASSWORD',
+  );
+
+Creates a new WebService::SyoboiCalendar object. 
+
+=item current
+
+  my $result = $syobocal->current;
+
+Returns a WebService::SyoboiCalendar::API::Result of current
+Anime program.
+
+=item timetable
+
+  my $results = $syobocal->timetable;
+
+Returns an Anime program timetable as a 
+WebService::SyoboiCalendar::API::Result list.
+
+=item search_title
+
+  my $results = $syobocal->search_title(
+      title => $title,
+      range => $range,
+  );
+
+Searches Anime titles, and returns
+a WebService::SyoboiCalendar::API::Result list as a result.
+
+=item search_program
+
+  my $results = $syobocal->search_title(
+      title    => $title,
+      channel  => $channel,
+      subtitle => $subtitle,
+      comment  => $comment,
+      fresh    => 1,
+      final    => 1,
+      special  => 1,
+  );
+
+Searches Anime programs, and returns
+a WebService::SyoboiCalendar::API::Result list as a result.
 
 =head1 AUTHOR
 
