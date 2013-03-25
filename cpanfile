@@ -1,7 +1,3 @@
-use inc::Module::Install;
-name 'WebService-SyoboiCalendar';
-all_from 'lib/WebService/SyoboiCalendar.pm';
-
 requires 'LWP::UserAgent';
 requires 'Mouse';
 requires 'JSON::XS';
@@ -15,9 +11,3 @@ requires 'Readonly';
 requires 'URI';
 requires 'URI::QueryParam';
 requires 'DateTime';
-
-install_script 'bin/syoboirepl';
-
-build_requires 'Test::More';
-auto_include;
-WriteAll;
