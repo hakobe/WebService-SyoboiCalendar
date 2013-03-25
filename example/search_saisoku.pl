@@ -41,24 +41,23 @@ for my $result (@$results) {
     $ch_name =~ s/テレビ//g;
 
     my $is_saisoku =  ($first_ch =~ m/$ch_name/ || $ch_name =~ m/$first_ch/) ? 1 : 0;
+
     my ($month, $day, $hour, $minute, $day_of_week);
-    if ($program->start_time->hour <= 5) {
+    {
         my $start_time = $program->start_time;
-        $start_time->add( days => -1 );
-        $month = $start_time->month;
-        $day = $start_time->day;
-        $hour = $start_time->hour <= 5 ? $start_time->hour + 24 : $start_time->hour;
-        $minute = $start_time->minute;
+        if ($program->start_time->hour <= 5) { # 深夜帯は読み易い表記にする
+            $start_time->add( days => -1 );
+            $hour = $start_time->hour <= 5 ? $start_time->hour + 24 : $start_time->hour;
+        }
+        else {
+            $hour = $start_time->hour;
+        }
+        $month       = $start_time->month;
+        $day         = $start_time->day;
+        $minute      = $start_time->minute;
         $day_of_week = $day_of_weeks->[ $start_time->day_of_week - 1 ];
     }
-    else {
-        my $start_time = $program->start_time;
-        $hour = $start_time->hour;
-        $minute = $start_time->minute;
-        $month = $start_time->month;
-        $day = $start_time->day;
-        $day_of_week = $day_of_weeks->[ $start_time->day_of_week - 1 ];
-    }
+
     my $result = $tx->render_string( $template, {
         ch_name     => $program->ch_name,
         title       => $title->title,
