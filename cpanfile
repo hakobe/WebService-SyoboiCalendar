@@ -11,3 +11,4 @@ requires 'Readonly';
 requires 'URI';
 requires 'URI::QueryParam';
 requires 'DateTime';
+requires 'Exception::Class';
