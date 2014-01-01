@@ -9,6 +9,10 @@ use Data::Dumper;
 use Text::Xslate;
 use Data::Section::Simple qw(get_data_section);
 
+my ($year, $season) = @ARGV;
+
+die "USAGE: perl $0 year winter|spring|summer|fall\n" if !$year || !$season;
+
 my $config = pit_get("cal.syoboi.jp", require => {
     user => "your username on Syoboi Calendar",
     pass => "your password on Syoboi Calendar"
@@ -16,8 +20,15 @@ my $config = pit_get("cal.syoboi.jp", require => {
 
 my $syoboi = WebService::SyoboiCalendar->new($config);
 
+my $seasons = {
+    winter => [qw(  1/1   1/31 )],
+    spring => [qw(  3/20  4/30 )],
+    summer => [qw(  6/20  7/31 )],
+    fall   => [qw(  9/30 10/30 )],
+};
+
 my $results = $syoboi->search_program({
-    range => '2013/3/25-2013/4/30',
+    range => join('-', map { "$year/$_" } @{ $seasons->{$season} } ),
     fresh => 2,
 });
 my $day_of_weeks = [qw(月 火 水 木 金 土 日)];
@@ -62,11 +73,13 @@ for my $result (@$results) {
         ch_name     => $program->ch_name,
         title       => $title->title,
         title_link  => $title->official_site_url,
+        tid         => $title->tid,
         month       => $month,
         day         => $day,
         hour        => $hour,
         minute      => $minute,
         day_of_week => $day_of_week,
+        is_saisoku  => $is_saisoku,
     });
     print encode_utf8( $result );
 }
@@ -74,4 +87,4 @@ for my $result (@$results) {
 
 __DATA__
 @@ row
-| [% month %]月[% day %]日 ([% day_of_week %]) [% hour %]時[% minute %]分〜 | [% ch_name %] | <a href="[% title_link %]">[% title %]</a> |
+| [% month %]月[% day %]日 ([% day_of_week %]) [% hour %]時[% minute %]分〜 | [% IF is_saisoku%](最速!)[% END %] [% ch_name %] | <a href="[% title_link %]">[% title %]</a> | <a href="http://cal.syoboi.jp/tid/[% tid %]">しょぼいカレンダー</a> |
