@@ -12,7 +12,3 @@ requires 'URI';
 requires 'URI::QueryParam';
 requires 'DateTime';
 requires 'Exception::Class';
-
-on 'develop' => sub {
-    recommends 'Config::Pit';
-};
