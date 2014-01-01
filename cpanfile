@@ -12,3 +12,10 @@ requires 'URI';
 requires 'URI::QueryParam';
 requires 'DateTime';
 requires 'Exception::Class';
+
+on 'develop' => sub {
+    requires 'Module::Install';
+    requires 'Module::Install::CPANfile';
+    requires 'Module::Install::AuthorTests';
+    requires 'Module::Install::Repository';
+};
