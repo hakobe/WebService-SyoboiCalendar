@@ -13,9 +13,19 @@ requires 'URI::QueryParam';
 requires 'DateTime';
 requires 'Exception::Class';
 
+on 'test' => sub {
+    requires 'Test::More';
+    requires 'Test::use::ok';
+    requires 'LWP::Protocol::PSGI';
+    requires 'Router::Simple';
+};
+
 on 'develop' => sub {
     requires 'Module::Install';
     requires 'Module::Install::CPANfile';
     requires 'Module::Install::AuthorTests';
     requires 'Module::Install::Repository';
+    recommends 'Config::Pit';
+    recommends 'Text::Xslate';
 };
+

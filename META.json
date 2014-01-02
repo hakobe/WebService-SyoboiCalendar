@@ -34,6 +34,10 @@
          }
       },
       "develop" : {
+         "recommends" : {
+            "Config::Pit" : "0",
+            "Text::Xslate" : "0"
+         },
          "requires" : {
             "Module::Install" : "0",
             "Module::Install::AuthorTests" : "0",
