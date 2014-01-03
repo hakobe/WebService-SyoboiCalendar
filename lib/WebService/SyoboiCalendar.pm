@@ -58,11 +58,13 @@ sub timetable {
 sub search_tiny {
     args_pos my $self, my $title;
 
-    [ $self->_map_to_results(values %{ $self->api->json({
+    my $titles = $self->api->json({
         req    => 'TitleSearch',
         search => $title,
         limit  => 15,
-    })->{Titles} }) ];
+    })->{Titles};
+
+    [ $self->_map_to_results(map { $titles->{$_} } sort { $b <=> $a } keys(%$titles)) ];
 }
 
 sub search_title {

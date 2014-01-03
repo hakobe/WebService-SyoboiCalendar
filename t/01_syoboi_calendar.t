@@ -79,10 +79,10 @@ subtest search_tiny => sub {
     is scalar(@$results), 3;
 
     isa_ok $results->[0], 'WebService::SyoboiCalendar::API::Result';
-    is $results->[0]->tid, 3216;
+    is $results->[0]->tid, 3219;
 
     isa_ok $results->[1], 'WebService::SyoboiCalendar::API::Result';
-    is $results->[1]->tid, 3219;
+    is $results->[1]->tid, 3216;
 
     isa_ok $results->[2], 'WebService::SyoboiCalendar::API::Result';
     is $results->[2]->tid, 2077;
