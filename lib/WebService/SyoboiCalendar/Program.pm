@@ -19,7 +19,7 @@ sub start_time {
     args my $self;
 
     DateTime->from_epoch(
-        time_zone => 'local',
+        time_zone => 'Asia/Tokyo',
         epoch     => $self->api_result->{StTime},
     );
 }
@@ -27,7 +27,7 @@ sub start_time {
 sub end_time {
     args my $self;
     DateTime->from_epoch(
-        time_zone => 'local',
+        time_zone => 'Asia/Tokyo',
         epoch     => $self->api_result->{EdTime},
     );
 }
