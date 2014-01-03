@@ -82,6 +82,12 @@ DISTRIBUTIONS
       Sub::Install 0.921
       strict 0
       warnings 0
+  Data-Section-Simple-0.05
+    pathname: M/MI/MIYAGAWA/Data-Section-Simple-0.05.tar.gz
+    provides:
+      Data::Section::Simple 0.05
+    requirements:
+      ExtUtils::MakeMaker 6.30
   DateTime-1.06
     pathname: D/DR/DROLSKY/DateTime-1.06.tar.gz
     provides:

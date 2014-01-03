@@ -18,6 +18,7 @@ on 'test' => sub {
     requires 'Test::use::ok';
     requires 'LWP::Protocol::PSGI';
     requires 'Router::Simple';
+    requires 'Data::Section::Simple';
 };
 
 on 'develop' => sub {

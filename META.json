@@ -66,6 +66,7 @@
       },
       "test" : {
          "requires" : {
+            "Data::Section::Simple" : "0",
             "LWP::Protocol::PSGI" : "0",
             "Router::Simple" : "0",
             "Test::More" : "0",
