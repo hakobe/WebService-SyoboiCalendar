@@ -89,11 +89,17 @@ subtest search_tiny => sub {
 };
 
 subtest search_title => sub {
-    fail();
+    TODO : {
+        local $TODO = 'requires HTML scraping test';
+        fail();
+    };
 };
 
 subtest search_program => sub {
-    fail();
+    TODO : {
+        local $TODO = 'requires HTML scraping test';
+        fail();
+    };
 };
 
 done_testing;
