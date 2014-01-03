@@ -38,8 +38,8 @@ subtest title => sub {
     ok $title->comment;
     is $title->sub_titles->[0], '夢の中で会った、ような・・・・・';
     is $title->cast->{'佐倉杏子'}, '野中藍';
-    is $title->characters->[0], '佐倉杏子';
-    is $title->voice_actors->[0], '野中藍';
+    is $title->characters->[0], 'キュゥべえ';
+    is $title->voice_actors->[0], '加藤英美里';
 };
 
 subtest program => sub {

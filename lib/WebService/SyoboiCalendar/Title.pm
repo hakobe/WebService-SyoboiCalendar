@@ -61,12 +61,12 @@ sub sub_titles {
 
 sub characters {
     args my $self;
-    [keys %{ $self->cast }];
+    [sort { $a cmp $b } keys %{ $self->cast }];
 }
 
 sub voice_actors {
     args my $self;
-    [values %{ $self->cast }];
+    [map { $self->cast->{$_} } @{ $self->characters }];
 }
 
 sub find_cast {
