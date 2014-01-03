@@ -85,13 +85,13 @@ to access Syoboi Calendar(http://cal.syoboi.jp/).
     Searches Anime programs, and returns
     a WebService::SyoboiCalendar::API::Result list as a result.
 
-    # AUTHOR
+# AUTHOR
 
     Yohei Fushii <hakobe@gmail.com>
 
-    # LICENSE
+# LICENSE
 
     This library is free software; you can redistribute it and/or modify
     it under the same terms as Perl itself.
 
-    # SEE ALSO
+# SEE ALSO
