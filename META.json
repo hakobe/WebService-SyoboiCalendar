@@ -34,10 +34,6 @@
          }
       },
       "develop" : {
-         "recommends" : {
-            "Config::Pit" : "0",
-            "Text::Xslate" : "0"
-         },
          "requires" : {
             "Test::CPAN::Meta" : "0",
             "Test::MinimumVersion" : "0.10108",
@@ -46,6 +42,14 @@
          }
       },
       "runtime" : {
+         "recommends" : {
+            "Config::Pit" : "0",
+            "Eval::WithLexicals" : "0",
+            "Term::ANSIColor::Markup" : "0",
+            "Term::Encoding" : "0",
+            "Text::Xslate" : "0",
+            "YAML" : "0"
+         },
          "requires" : {
             "DateTime" : "0",
             "Encode" : "0",
