@@ -32,10 +32,14 @@ my $results = $syoboi->search_program({
     fresh => 2,
 });
 my $day_of_weeks = [qw(月 火 水 木 金 土 日)];
-my $template = get_data_section('row');
+my $template = get_data_section('template');
 my $tx = Text::Xslate->new(
     syntax => 'TTerse'
 );
+
+my $stash = {
+    rows => [],
+};
 
 for my $result (@$results) {
     my $title = $result->title;
@@ -51,7 +55,12 @@ for my $result (@$results) {
     $ch_name =~ s/放送//g;
     $ch_name =~ s/テレビ//g;
 
-    my $is_saisoku =  ($first_ch =~ m/$ch_name/ || $ch_name =~ m/$first_ch/) ? 1 : 0;
+    my $is_saisoku = ($first_ch =~ m/$ch_name/ || $ch_name =~ m/$first_ch/) ? 1 : 0;
+    my $is_saihoso = ($title->{api_result}->{FirstYear} || '') ne $year;
+
+    my @infos = ();
+    push(@infos, '最速') if $is_saisoku;
+    push(@infos, '再放送') if $is_saihoso;
 
     my ($month, $day, $hour, $minute, $day_of_week);
     {
@@ -69,7 +78,7 @@ for my $result (@$results) {
         $day_of_week = $day_of_weeks->[ $start_time->day_of_week - 1 ];
     }
 
-    my $result = $tx->render_string( $template, {
+    push @{ $stash->{rows} }, +{
         ch_name     => $program->ch_name,
         title       => $title->title,
         title_link  => $title->official_site_url,
@@ -79,12 +88,31 @@ for my $result (@$results) {
         hour        => $hour,
         minute      => $minute,
         day_of_week => $day_of_week,
-        is_saisoku  => $is_saisoku,
-    });
-    print encode_utf8( $result );
+        info        => join(' ', @infos),
+    };
 }
 
+my $result = $tx->render_string( $template, $stash);
+print encode_utf8( $result );
 
 __DATA__
-@@ row
-| [% month %]月[% day %]日 ([% day_of_week %]) [% hour %]時[% minute %]分〜 | [% IF is_saisoku%](最速!)[% END %] [% ch_name %] | <a href="[% title_link %]">[% title %]</a> | <a href="http://cal.syoboi.jp/tid/[% tid %]">しょぼいカレンダー</a> |
+@@ template
+<table class="anime-program-table">
+    <tr>
+        <th> 放送日時 </th>
+        <th> 放送局 </th>
+        <th> 作品名 </th>
+        <th> 補足 </th>
+        <th> しょぼいカレンダー </th>
+    </tr>
+    [% FOR row IN rows %]
+    <tr>
+        <td> [% row.month %]月[% row.day %]日 ([% row.day_of_week %]) [% row.hour %]時[% row.minute %]分〜 </td>
+        <td> [% row.ch_name %] </td>
+        <td> <a href="[% row.title_link %]">[% row.title %]</a> </td>
+        <td class="info"> [% row.info %] </td>
+        <td> <a href="http://cal.syoboi.jp/tid/[% row.tid %]"> [% row.tid %] </a> </td>
+    </tr>
+    [% END # FOR row IN rows %]
+</table>
+
