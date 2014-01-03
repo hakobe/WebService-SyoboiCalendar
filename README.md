@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/hakobe/WebService-SyoboiCalendar.png?branch=master)](https://travis-ci.org/hakobe/WebService-SyoboiCalendar)
 # NAME
 
 WebService::SyoboiCalendar - Retrieve Anime info. with SyoboiCalendar API.
