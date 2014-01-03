@@ -188,6 +188,8 @@ a WebService::SyoboiCalendar::API::Result list as a result.
 Searches Anime programs, and returns
 a WebService::SyoboiCalendar::API::Result list as a result.
 
+=back
+
 =head1 AUTHOR
 
 Yohei Fushii E<lt>hakobe@gmail.comE<gt>
@@ -196,7 +198,5 @@ Yohei Fushii E<lt>hakobe@gmail.comE<gt>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
-=head1 SEE ALSO
 
 =cut

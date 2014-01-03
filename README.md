@@ -87,11 +87,9 @@ to access Syoboi Calendar(http://cal.syoboi.jp/).
 
 # AUTHOR
 
-    Yohei Fushii <hakobe@gmail.com>
+Yohei Fushii <hakobe@gmail.com>
 
 # LICENSE
 
-    This library is free software; you can redistribute it and/or modify
-    it under the same terms as Perl itself.
-
-# SEE ALSO
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
