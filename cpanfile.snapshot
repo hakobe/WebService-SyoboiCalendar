@@ -1,11 +1,38 @@
 # carton snapshot format: version 1.0
 DISTRIBUTIONS
+  Apache-LogFormat-Compiler-0.13
+    pathname: K/KA/KAZEBURO/Apache-LogFormat-Compiler-0.13.tar.gz
+    provides:
+      Apache::LogFormat::Compiler 0.13
+    requirements:
+      CPAN::Meta 0
+      CPAN::Meta::Prereqs 0
+      Module::Build 0.38
+      POSIX 0
+      Time::Local 0
+      perl 5.008005
+  Class-Accessor-Lite-0.05
+    pathname: K/KA/KAZUHO/Class-Accessor-Lite-0.05.tar.gz
+    provides:
+      Class::Accessor::Lite 0.05
+    requirements:
+      ExtUtils::MakeMaker 6.42
   Class-Data-Inheritable-0.08
     pathname: T/TM/TMTM/Class-Data-Inheritable-0.08.tar.gz
     provides:
       Class::Data::Inheritable 0.08
     requirements:
       ExtUtils::MakeMaker 0
+  Class-Inspector-1.28
+    pathname: A/AD/ADAMK/Class-Inspector-1.28.tar.gz
+    provides:
+      Class::Inspector 1.28
+      Class::Inspector::Functions 1.28
+    requirements:
+      ExtUtils::MakeMaker 6.59
+      File::Spec 0.80
+      Test::More 0.47
+      perl 5.006
   Class-Load-0.20
     pathname: D/DR/DROLSKY/Class-Load-0.20.tar.gz
     provides:
@@ -1020,6 +1047,16 @@ DISTRIBUTIONS
       overload 0
       strict 0
       warnings 0
+  Devel-StackTrace-AsHTML-0.14
+    pathname: M/MI/MIYAGAWA/Devel-StackTrace-AsHTML-0.14.tar.gz
+    provides:
+      Devel::StackTrace::AsHTML 0.14
+    requirements:
+      Devel::StackTrace 0
+      ExtUtils::MakeMaker 6.59
+      Filter::Util::Call 0
+      Test::More 0
+      perl 5.008001
   Dist-CheckConflicts-0.10
     pathname: D/DO/DOY/Dist-CheckConflicts-0.10.tar.gz
     provides:
@@ -1059,6 +1096,49 @@ DISTRIBUTIONS
       overload 0
       strict 0
       vars 0
+      warnings 0
+  ExtUtils-Config-0.007
+    pathname: L/LE/LEONT/ExtUtils-Config-0.007.tar.gz
+    provides:
+      ExtUtils::Config 0.007
+    requirements:
+      Config 0
+      Data::Dumper 0
+      ExtUtils::MakeMaker 6.30
+      File::Find 0
+      File::Temp 0
+      Test::More 0.88
+      strict 0
+      warnings 0
+  ExtUtils-Helpers-0.021
+    pathname: L/LE/LEONT/ExtUtils-Helpers-0.021.tar.gz
+    provides:
+      ExtUtils::Helpers 0.021
+      ExtUtils::Helpers::Unix 0.021
+      ExtUtils::Helpers::VMS 0.021
+      ExtUtils::Helpers::Windows 0.021
+    requirements:
+      Carp 0
+      Config 0
+      Exporter 5.57
+      ExtUtils::MakeMaker 6.30
+      File::Basename 0
+      File::Copy 0
+      File::Spec::Functions 0
+      Module::Load 0
+      Text::ParseWords 3.24
+      strict 0
+      warnings 0
+  ExtUtils-InstallPaths-0.010
+    pathname: L/LE/LEONT/ExtUtils-InstallPaths-0.010.tar.gz
+    provides:
+      ExtUtils::InstallPaths 0.010
+    requirements:
+      Carp 0
+      ExtUtils::Config 0.002
+      ExtUtils::MakeMaker 6.30
+      File::Spec 0
+      strict 0
       warnings 0
   ExtUtils-MakeMaker-6.84
     pathname: B/BI/BINGOS/ExtUtils-MakeMaker-6.84.tar.gz
@@ -1138,6 +1218,37 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       HTTP::Date 6
       perl 5.006002
+  File-ShareDir-1.03
+    pathname: A/AD/ADAMK/File-ShareDir-1.03.tar.gz
+    provides:
+      File::ShareDir 1.03
+    requirements:
+      Carp 0
+      Class::Inspector 1.12
+      ExtUtils::MakeMaker 6.42
+      File::Spec 0.80
+      Test::More 0.47
+      perl 5.005
+  File-ShareDir-Install-0.05
+    pathname: G/GW/GWYN/File-ShareDir-Install-0.05.tar.gz
+    provides:
+      File::ShareDir::Install 0.05
+    requirements:
+      ExtUtils::MakeMaker 6.11
+      File::Spec 0
+      IO::Dir 0
+  Filesys-Notify-Simple-0.12
+    pathname: M/MI/MIYAGAWA/Filesys-Notify-Simple-0.12.tar.gz
+    provides:
+      Filesys::Notify::Simple 0.12
+    requirements:
+      ExtUtils::MakeMaker 6.30
+  Guard-1.022
+    pathname: M/ML/MLEHMANN/Guard-1.022.tar.gz
+    provides:
+      Guard 1.022
+    requirements:
+      ExtUtils::MakeMaker 0
   HTML-Parser-3.71
     pathname: G/GA/GAAS/HTML-Parser-3.71.tar.gz
     provides:
@@ -1205,6 +1316,23 @@ DISTRIBUTIONS
       HTML::TreeBuilder 0
       List::Util 0
       XML::XPathEngine 0.12
+  HTTP-Body-1.19
+    pathname: G/GE/GETTY/HTTP-Body-1.19.tar.gz
+    provides:
+      HTTP::Body 1.19
+      HTTP::Body::MultiPart 1.19
+      HTTP::Body::OctetStream 1.19
+      HTTP::Body::UrlEncoded 1.19
+      HTTP::Body::XForms 1.19
+      HTTP::Body::XFormsMultipart 1.19
+      PAML undef
+    requirements:
+      Carp 0
+      Digest::MD5 0
+      ExtUtils::MakeMaker 6.30
+      File::Temp 0.14
+      HTTP::Headers 0
+      IO::File 1.14
   HTTP-Cookies-6.01
     pathname: G/GA/GAAS/HTTP-Cookies-6.01.tar.gz
     provides:
@@ -1280,6 +1408,26 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       HTTP::Headers 6
       perl 5.008001
+  HTTP-Tiny-0.039
+    pathname: D/DA/DAGOLDEN/HTTP-Tiny-0.039.tar.gz
+    provides:
+      HTTP::Tiny 0.039
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 6.17
+      Fcntl 0
+      IO::Socket 0
+      MIME::Base64 0
+      Time::Local 0
+      bytes 0
+      strict 0
+      warnings 0
+  Hash-MultiValue-0.15
+    pathname: M/MI/MIYAGAWA/Hash-MultiValue-0.15.tar.gz
+    provides:
+      Hash::MultiValue 0.15
+    requirements:
+      ExtUtils::MakeMaker 6.30
   IO-HTML-1.00
     pathname: C/CJ/CJM/IO-HTML-1.00.tar.gz
     provides:
@@ -1307,6 +1455,18 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.006002
+  LWP-Protocol-PSGI-0.06
+    pathname: M/MI/MIYAGAWA/LWP-Protocol-PSGI-0.06.tar.gz
+    provides:
+      LWP::Protocol::PSGI 0.06
+    requirements:
+      Guard 0
+      HTTP::Message::PSGI 0
+      LWP 5
+      LWP::Protocol 0
+      Module::Build::Tiny 0.023
+      parent 0
+      perl 5.008001
   List-MoreUtils-0.33
     pathname: A/AD/ADAMK/List-MoreUtils-0.33.tar.gz
     provides:
@@ -1371,6 +1531,31 @@ DISTRIBUTIONS
       Text::ParseWords 0
       perl 5.006001
       version 0.87
+  Module-Build-Tiny-0.030
+    pathname: L/LE/LEONT/Module-Build-Tiny-0.030.tar.gz
+    provides:
+      Module::Build::Tiny 0.030
+    requirements:
+      CPAN::Meta 0
+      Exporter 5.57
+      ExtUtils::CBuilder 0
+      ExtUtils::Config 0.003
+      ExtUtils::Helpers 0.020
+      ExtUtils::Install 0
+      ExtUtils::InstallPaths 0.002
+      ExtUtils::ParseXS 0
+      File::Basename 0
+      File::Find 0
+      File::Path 0
+      File::Spec::Functions 0
+      Getopt::Long 0
+      JSON::PP 2
+      Pod::Man 0
+      TAP::Harness 3.29
+      TAP::Harness::Env 0
+      perl 5.006
+      strict 0
+      warnings 0
   Module-Build-XSUtil-0.05
     pathname: H/HI/HIDEAKIO/Module-Build-XSUtil-0.05.tar.gz
     provides:
@@ -1559,6 +1744,101 @@ DISTRIBUTIONS
       strict 0
       vars 0
       warnings 0
+  Plack-1.0030
+    pathname: M/MI/MIYAGAWA/Plack-1.0030.tar.gz
+    provides:
+      HTTP::Message::PSGI undef
+      HTTP::Server::PSGI undef
+      Plack 1.0030
+      Plack::App::CGIBin undef
+      Plack::App::Cascade undef
+      Plack::App::Directory undef
+      Plack::App::File undef
+      Plack::App::PSGIBin undef
+      Plack::App::URLMap undef
+      Plack::App::WrapCGI undef
+      Plack::Builder undef
+      Plack::Component undef
+      Plack::HTTPParser undef
+      Plack::HTTPParser::PP undef
+      Plack::Handler undef
+      Plack::Handler::Apache1 undef
+      Plack::Handler::Apache2 undef
+      Plack::Handler::Apache2::Registry undef
+      Plack::Handler::CGI undef
+      Plack::Handler::CGI::Writer undef
+      Plack::Handler::FCGI undef
+      Plack::Handler::HTTP::Server::PSGI undef
+      Plack::Handler::Standalone undef
+      Plack::LWPish undef
+      Plack::Loader undef
+      Plack::Loader::Delayed undef
+      Plack::Loader::Restarter undef
+      Plack::Loader::Shotgun undef
+      Plack::MIME undef
+      Plack::Middleware undef
+      Plack::Middleware::AccessLog undef
+      Plack::Middleware::AccessLog::Timed undef
+      Plack::Middleware::Auth::Basic undef
+      Plack::Middleware::BufferedStreaming undef
+      Plack::Middleware::Chunked undef
+      Plack::Middleware::Conditional undef
+      Plack::Middleware::ConditionalGET undef
+      Plack::Middleware::ContentLength undef
+      Plack::Middleware::ContentMD5 undef
+      Plack::Middleware::ErrorDocument undef
+      Plack::Middleware::HTTPExceptions undef
+      Plack::Middleware::Head undef
+      Plack::Middleware::IIS6ScriptNameFix undef
+      Plack::Middleware::IIS7KeepAliveFix undef
+      Plack::Middleware::JSONP undef
+      Plack::Middleware::LighttpdScriptNameFix undef
+      Plack::Middleware::Lint undef
+      Plack::Middleware::Log4perl undef
+      Plack::Middleware::LogDispatch undef
+      Plack::Middleware::NullLogger undef
+      Plack::Middleware::RearrangeHeaders undef
+      Plack::Middleware::Recursive undef
+      Plack::Middleware::Refresh undef
+      Plack::Middleware::Runtime undef
+      Plack::Middleware::SimpleContentFilter undef
+      Plack::Middleware::SimpleLogger undef
+      Plack::Middleware::StackTrace undef
+      Plack::Middleware::Static undef
+      Plack::Middleware::XFramework undef
+      Plack::Middleware::XSendfile undef
+      Plack::Recursive::ForwardRequest undef
+      Plack::Request 1.0030
+      Plack::Request::Upload undef
+      Plack::Response 1.0030
+      Plack::Runner undef
+      Plack::TempBuffer undef
+      Plack::Test undef
+      Plack::Test::MockHTTP undef
+      Plack::Test::Server undef
+      Plack::Test::Suite undef
+      Plack::Util undef
+      Plack::Util::Accessor undef
+      Plack::Util::IOWithPath undef
+      Plack::Util::Prototype undef
+    requirements:
+      Apache::LogFormat::Compiler 0.12
+      Devel::StackTrace 1.23
+      Devel::StackTrace::AsHTML 0.11
+      ExtUtils::MakeMaker 6.30
+      File::ShareDir 1.00
+      File::ShareDir::Install 0.03
+      Filesys::Notify::Simple 0
+      HTTP::Body 1.06
+      HTTP::Message 5.814
+      HTTP::Tiny 0.034
+      Hash::MultiValue 0.05
+      Pod::Usage 1.36
+      Stream::Buffered 0.02
+      Test::TCP 2.00
+      Try::Tiny 0
+      URI 1.59
+      parent 0
   Readonly-1.04
     pathname: S/SA/SANKO/Readonly-1.04.tar.gz
     provides:
@@ -1614,6 +1894,23 @@ DISTRIBUTIONS
       perl 5.00473
       strict 0
       vars 0
+  Router-Simple-0.15
+    pathname: T/TO/TOKUHIROM/Router-Simple-0.15.tar.gz
+    provides:
+      Router::Simple 0.15
+      Router::Simple::Declare undef
+      Router::Simple::Route undef
+      Router::Simple::SubMapper undef
+    requirements:
+      CPAN::Meta 0
+      CPAN::Meta::Prereqs 0
+      Class::Accessor::Lite 0.05
+      ExtUtils::CBuilder 0
+      List::Util 0
+      Module::Build 0.38
+      Scalar::Util 0
+      parent 0
+      perl 5.008_001
   Smart-Args-0.12
     pathname: T/TO/TOKUHIROM/Smart-Args-0.12.tar.gz
     provides:
@@ -1637,6 +1934,15 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 6.59
       perl 5.006001
+  Stream-Buffered-0.02
+    pathname: D/DO/DOY/Stream-Buffered-0.02.tar.gz
+    provides:
+      Stream::Buffered 0.02
+      Stream::Buffered::Auto undef
+      Stream::Buffered::File undef
+      Stream::Buffered::PerlIO undef
+    requirements:
+      ExtUtils::MakeMaker 6.36
   Sub-Install-0.927
     pathname: R/RJ/RJBS/Sub-Install-0.927.tar.gz
     provides:
@@ -1674,6 +1980,59 @@ DISTRIBUTIONS
       Try::Tiny 0.07
       strict 0
       warnings 0
+  Test-Harness-3.30
+    pathname: L/LE/LEONT/Test-Harness-3.30.tar.gz
+    provides:
+      App::Prove 3.30
+      App::Prove::State 3.30
+      App::Prove::State::Result 3.30
+      App::Prove::State::Result::Test 3.30
+      TAP::Base 3.30
+      TAP::Formatter::Base 3.30
+      TAP::Formatter::Color 3.30
+      TAP::Formatter::Console 3.30
+      TAP::Formatter::Console::ParallelSession 3.30
+      TAP::Formatter::Console::Session 3.30
+      TAP::Formatter::File 3.30
+      TAP::Formatter::File::Session 3.30
+      TAP::Formatter::Session 3.30
+      TAP::Harness 3.30
+      TAP::Harness::Env 3.30
+      TAP::Object 3.30
+      TAP::Parser 3.30
+      TAP::Parser::Aggregator 3.30
+      TAP::Parser::Grammar 3.30
+      TAP::Parser::Iterator 3.30
+      TAP::Parser::Iterator::Array 3.30
+      TAP::Parser::Iterator::Process 3.30
+      TAP::Parser::Iterator::Stream 3.30
+      TAP::Parser::IteratorFactory 3.30
+      TAP::Parser::Multiplexer 3.30
+      TAP::Parser::Result 3.30
+      TAP::Parser::Result::Bailout 3.30
+      TAP::Parser::Result::Comment 3.30
+      TAP::Parser::Result::Plan 3.30
+      TAP::Parser::Result::Pragma 3.30
+      TAP::Parser::Result::Test 3.30
+      TAP::Parser::Result::Unknown 3.30
+      TAP::Parser::Result::Version 3.30
+      TAP::Parser::Result::YAML 3.30
+      TAP::Parser::ResultFactory 3.30
+      TAP::Parser::Scheduler 3.30
+      TAP::Parser::Scheduler::Job 3.30
+      TAP::Parser::Scheduler::Spinner 3.30
+      TAP::Parser::Source 3.30
+      TAP::Parser::SourceHandler 3.30
+      TAP::Parser::SourceHandler::Executable 3.30
+      TAP::Parser::SourceHandler::File 3.30
+      TAP::Parser::SourceHandler::Handle 3.30
+      TAP::Parser::SourceHandler::Perl 3.30
+      TAP::Parser::SourceHandler::RawTAP 3.30
+      TAP::Parser::YAMLish::Reader 3.30
+      TAP::Parser::YAMLish::Writer 3.30
+      Test::Harness 3.30
+    requirements:
+      ExtUtils::MakeMaker 0
   Test-Requires-0.07
     pathname: T/TO/TOKUHIROM/Test-Requires-0.07.tar.gz
     provides:
@@ -1686,6 +2045,44 @@ DISTRIBUTIONS
       Test::Builder::Module 0
       Test::More 0.61
       perl 5.008_001
+  Test-SharedFork-0.21
+    pathname: T/TO/TOKUHIROM/Test-SharedFork-0.21.tar.gz
+    provides:
+      Test::SharedFork 0.21
+      Test::SharedFork::Array undef
+      Test::SharedFork::Scalar undef
+      Test::SharedFork::Store undef
+    requirements:
+      App::Prove 0
+      ExtUtils::MakeMaker 6.59
+      Test::More 0.88
+      Test::Requires 0
+      Time::HiRes 0
+      perl 5.008
+  Test-TCP-2.02
+    pathname: T/TO/TOKUHIROM/Test-TCP-2.02.tar.gz
+    provides:
+      Net::EmptyPort undef
+      Test::TCP 2.02
+      Test::TCP::CheckPort undef
+    requirements:
+      CPAN::Meta 0
+      CPAN::Meta::Prereqs 0
+      ExtUtils::CBuilder 0
+      IO::Socket::INET 0
+      Module::Build 0.38
+      Test::More 0
+      Test::SharedFork 0.19
+      Time::HiRes 0
+      perl 5.008001
+  Test-use-ok-0.11
+    pathname: A/AU/AUDREYT/Test-use-ok-0.11.tar.gz
+    provides:
+      Test::use::ok 0.11
+      ok 0.11
+    requirements:
+      ExtUtils::MakeMaker 6.36
+      perl 5.005
   Try-Tiny-0.18
     pathname: D/DO/DOY/Try-Tiny-0.18.tar.gz
     provides:

@@ -21,10 +21,6 @@ on 'test' => sub {
 };
 
 on 'develop' => sub {
-    requires 'Module::Install';
-    requires 'Module::Install::CPANfile';
-    requires 'Module::Install::AuthorTests';
-    requires 'Module::Install::Repository';
     recommends 'Config::Pit';
     recommends 'Text::Xslate';
 };
