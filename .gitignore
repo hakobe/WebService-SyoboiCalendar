@@ -2,6 +2,10 @@
 /WebService-SyoboiCalendar-*
 /.build
 /_build_params
+/_build
+/MYMETA.json
+/MYMETA.yml
+/blib
 /Build
 /Build.bat
 !Build/
