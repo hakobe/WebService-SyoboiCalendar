@@ -1,6 +1,6 @@
 package WebService::SyoboiCalendar;
 
-use Mouse;
+use Moo;
 
 use 5.008_001;
 our $VERSION = '0.01';
@@ -10,8 +10,8 @@ use Smart::Args;
 use WebService::SyoboiCalendar::API;
 use WebService::SyoboiCalendar::API::Result;
 
-has user => (is => 'rw', isa => 'Str');
-has pass => (is => 'rw', isa => 'Str');
+has user => (is => 'rw');
+has pass => (is => 'rw');
 
 has api => (
     is => 'ro',
@@ -96,8 +96,7 @@ sub _map_to_results {
     } @results;
 }
 
-no Mouse;
-__PACKAGE__->meta->make_immutable;
+1;
 
 __END__
 

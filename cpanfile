@@ -1,8 +1,6 @@
 requires 'LWP::UserAgent';
-requires 'Mouse';
+requires 'Moo';
 requires 'JSON::XS';
-requires 'Try::Tiny';
-requires 'parent';
 requires 'Web::Query';
 requires 'Smart::Args' => "0.08";
 requires 'Regexp::Common';

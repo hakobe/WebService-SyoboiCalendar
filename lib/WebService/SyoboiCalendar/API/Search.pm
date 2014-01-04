@@ -1,5 +1,5 @@
 package WebService::SyoboiCalendar::API::Search;
-use Mouse;
+use Moo;
 use Smart::Args;
 use Web::Query;
 use Readonly;
@@ -10,7 +10,6 @@ Readonly my $API_SEARCH => "http://cal.syoboi.jp/find";
 
 has api => (
     is => 'ro',
-    isa => 'WebService::SyoboiCalendar::API',
     required => 1,
 );
 
@@ -34,9 +33,6 @@ for my $field (keys %field_to_param) {
 }
 
 has range => ( is => 'rw');
-
-no Mouse;
-__PACKAGE__->meta->make_immutable;
 
 sub get {
     args my $self;

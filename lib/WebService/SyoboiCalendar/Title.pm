@@ -1,5 +1,5 @@
 package WebService::SyoboiCalendar::Title;
-use Mouse;
+use Moo;
 use Smart::Args;
 use utf8;
 use Regexp::Common qw /URI/;
@@ -89,8 +89,7 @@ sub first_ch {
     $self->api_result->{FirstCh};
 }
 
-no Mouse;
-__PACKAGE__->meta->make_immutable;
+1;
 
 =head1 NAME
 

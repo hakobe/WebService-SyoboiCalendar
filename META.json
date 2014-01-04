@@ -56,15 +56,13 @@
             "Exception::Class" : "0",
             "JSON::XS" : "0",
             "LWP::UserAgent" : "0",
-            "Mouse" : "0",
+            "Moo" : "0",
             "Readonly" : "0",
             "Regexp::Common" : "0",
             "Smart::Args" : "0.08",
-            "Try::Tiny" : "0",
             "URI" : "0",
             "URI::QueryParam" : "0",
             "Web::Query" : "0",
-            "parent" : "0",
             "perl" : "5.008001"
          }
       },

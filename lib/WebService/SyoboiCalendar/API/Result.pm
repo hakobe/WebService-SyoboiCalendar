@@ -1,5 +1,5 @@
 package WebService::SyoboiCalendar::API::Result;
-use Mouse;
+use Moo;
 use Smart::Args;
 use WebService::SyoboiCalendar::Program;
 use WebService::SyoboiCalendar::Title;
@@ -43,8 +43,7 @@ sub title {
     WebService::SyoboiCalendar::Title->new( api_result => $result );
 }
 
-no Mouse;
-__PACKAGE__->meta->make_immutable;
+1;
 
 __END__
 

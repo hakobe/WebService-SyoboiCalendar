@@ -1,5 +1,5 @@
 package WebService::SyoboiCalendar::Program;
-use Mouse;
+use Moo;
 use Smart::Args;
 use DateTime;
 
@@ -37,8 +37,7 @@ sub ch_name {
     $self->api_result->{ChName};
 }
 
-no Mouse;
-__PACKAGE__->meta->make_immutable;
+1;
 
 =head1 NAME
 

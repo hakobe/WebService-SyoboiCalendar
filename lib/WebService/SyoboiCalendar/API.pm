@@ -1,5 +1,5 @@
 package WebService::SyoboiCalendar::API;
-use Mouse;
+use Moo;
 use Smart::Args;
 use Readonly;
 use LWP::UserAgent;
@@ -19,7 +19,6 @@ Readonly my $API_LOGIN => "http://cal.syoboi.jp/usr";
 
 has ua => (
     is => 'ro',
-    isa => 'LWP::UserAgent',
     default => sub { 
         my $ua = LWP::UserAgent->new;
         $ua->cookie_jar( {} );
@@ -34,9 +33,6 @@ has is_logging_in => (
     is      => 'rw',
     default => 0,
 );
-
-no Mouse;
-__PACKAGE__->meta->make_immutable;
 
 sub get {
     my ($self, $url, $args) = @_;
