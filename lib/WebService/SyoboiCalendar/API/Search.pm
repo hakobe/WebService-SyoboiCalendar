@@ -4,7 +4,6 @@ use Smart::Args;
 use Web::Query;
 use Readonly;
 use URI;
-use URI::QueryParam;
 
 Readonly my $API_SEARCH => "http://cal.syoboi.jp/find";
 
@@ -45,35 +44,35 @@ sub request_url {
     args my $self; 
 
     my $url = URI->new( $API_SEARCH );
-    $url->query_param_append(sd  => {
-        title   => 0,
-        program => 2,
-    }->{$self->mode}); 
-    $url->query_param_append(uuc => 1); # ユーザ設定を使う
-    $url->query_param_append(v   => 0); # リスト
+    my %params = (
+        sd  => {
+            title   => 0,
+            program => 2,
+        }->{$self->mode},
+        uuc => 1, # ユーザ設定を使う
+        v   => 0, # リスト
+    );
 
     for my $key (keys %field_to_param) {
-        if ($self->$key) {
-            $url->query_param_append(
-                $field_to_param{$key} => $self->$key,
-            );
-        }
+        next unless $self->$key;
+        $params{$field_to_param{$key}} = $self->$key;
     }
 
     my $range = $self->range || '';
     if ($range eq 'all') {
-        $url->query_param_append( r => 0 );
+        $params{r} = 0;
     }
     elsif ($range eq 'past') {
-        $url->query_param_append( r => 1 );
+        $params{r} = 1;
     }
     elsif ($range eq 'future') {
-        $url->query_param_append( r => 2 );
+        $params{r} = 2;
     }
     else {
-        $url->query_param_append( r => 3 );
-        $url->query_param_append( rd => $range );
+        $params{r} = 3;
+        $params{rd} = $range;
     }
+    $url->query_form( \%params );
     return $url;
 }
 

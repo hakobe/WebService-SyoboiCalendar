@@ -6,7 +6,6 @@ use LWP::UserAgent;
 use HTTP::Request;
 use HTTP::Request::Common;
 use URI;
-use URI::QueryParam;
 use JSON::XS;
 use Web::Query;
 
