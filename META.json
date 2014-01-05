@@ -61,7 +61,6 @@
             "Regexp::Common" : "0",
             "Smart::Args" : "0.08",
             "URI" : "0",
-            "URI::QueryParam" : "0",
             "Web::Query" : "0",
             "perl" : "5.008001"
          }
