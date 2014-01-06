@@ -176,7 +176,7 @@ a WebService::SyoboiCalendar::API::Result list as a result.
 
 =item search_program
 
-  my $results = $syobocal->search_title(
+  my $results = $syobocal->search_program(
       title    => $title,
       channel  => $channel,
       subtitle => $subtitle,
