@@ -73,7 +73,7 @@ to access Syoboi Calendar(http://cal.syoboi.jp/).
 
 - search\_program
 
-        my $results = $syobocal->search_title(
+        my $results = $syobocal->search_program(
             title    => $title,
             channel  => $channel,
             subtitle => $subtitle,

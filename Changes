@@ -2,5 +2,8 @@ Revision history for Perl extension WebService::SyoboiCalendar
 
 {{$NEXT}}
 
+0.02 2014-01-22T15:47:05Z
+    - Fixed issue with Encode 2.53~
+
 0.01 2014-01-05T14:03:33Z
     - original release
