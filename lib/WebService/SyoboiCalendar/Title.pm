@@ -23,7 +23,7 @@ sub BUILD {
             my $cast = {};
             my @lines = (split /\r\n/, $part);
             for my $line (@lines[1..$#lines]) {
-                my (undef, $character, $voice_actor) = split /:/, decode_utf8($line);
+                my (undef, $character, $voice_actor) = split /:/, $line;
                 $cast->{$character} = $voice_actor if $character && $voice_actor;
             }
             $self->cast($cast);
@@ -71,7 +71,6 @@ sub voice_actors {
 
 sub find_cast {
     args_pos my $self, my $character;
-    $character = decode_utf8($character); # XXX
 
     my ($result) = map { $self->cast->{$_} } grep {
         $_ =~ m/$character/;
